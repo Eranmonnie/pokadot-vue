@@ -8,7 +8,7 @@ import ChevronLeft from "vue-material-design-icons/ChevronLeft.vue";
 import MenuItem from "./components/MenuItem.vue";
 
 let openMenu = ref(false);
-</script>
+</script setup lang="ts">
 
 <template>
   <div>
