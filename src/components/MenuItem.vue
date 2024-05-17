@@ -3,12 +3,12 @@ import { ref, toRefs, watchEffect } from "vue";
 import { useRoute } from "vue-router";
 const router = useRoute();
 
-const props = defineProps({
-  iconString: String,
-  iconSize: Number,
-  pageUrl: String,
-  name: String,
-});
+const props = defineProps<{
+  iconString: string,
+  iconSize: number,
+  pageUrl: string,
+  name: string,
+}>();
 
 const { iconSize, iconString, pageUrl, name } = toRefs(props);
 

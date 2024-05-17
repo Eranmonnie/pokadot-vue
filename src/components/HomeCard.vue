@@ -2,11 +2,11 @@
 import { toRefs } from "vue";
 import { RouterLink } from "vue-router";
 
-const props = defineProps({
-  image: String,
-  title: String,
-  subTitle: String,
-});
+const props = defineProps<{
+  image: string,
+  title: string,
+  subTitle: string,
+}>();
 
 const { image, title, subTitle } = toRefs(props);
 </script>
