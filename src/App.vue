@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup>
 import { ref } from "vue";
 import { RouterLink, RouterView } from "vue-router";
 import ChevronUp from "vue-material-design-icons/ChevronUp.vue";
