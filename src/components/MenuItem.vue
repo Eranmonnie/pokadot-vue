@@ -12,7 +12,7 @@ const props = defineProps<{
 
 const { iconSize, iconString, pageUrl, name } = toRefs(props);
 
-let icon = ref(null);
+let icon = ref(undefined);
 let textIsHover = ref(false);
 
 watchEffect(() => {
