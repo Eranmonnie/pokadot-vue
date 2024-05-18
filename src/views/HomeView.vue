@@ -43,7 +43,6 @@ import HomeCard from "@/components/HomeCard.vue";
     </div>
   </div>
 
-
   <div class="p-8">
     <button
       type="button"
@@ -83,7 +82,6 @@ import HomeCard from "@/components/HomeCard.vue";
       />
     </div>
   </div>
-
 
   <div class="p-8">
     <button
