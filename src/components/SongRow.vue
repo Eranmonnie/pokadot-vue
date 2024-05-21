@@ -21,16 +21,19 @@ const props = defineProps<{
 
 const { artist, track, index } = toRefs(props);
 
-onMounted(() => {
-  const audio = new Audio(track.value.path);
+// onMounted(() => {});
 
+const audio = new Audio(track.value.path);
+
+const time = () => {
   audio.addEventListener("loadedmetadata", () => {
     const duration = audio.duration;
-    const mins = Math.floor(duration / 60);
+    const minutes = Math.floor(duration / 60);
     const seconds = Math.floor(duration % 60);
-    isTrackTime.value = mins + ":" + seconds.toString().padStart(2, "0");
+    isTrackTime.value = minutes + ":" + seconds.toString().padStart(2, "0");
   });
-});
+};
+time();
 </script>
 
 <template>
@@ -47,7 +50,7 @@ onMounted(() => {
           :size="25"
           @click="song.playOrPauseThisSong(artist, track)"
         />
-        
+
         <Play
           v-else-if="isPlaying && currentTrack.name != track.name"
           fillColor="#FFFFFF"
@@ -64,15 +67,25 @@ onMounted(() => {
       </div>
 
       <div v-else class="text-white font-semibold w-[40px] ml-5">
-        <span>
+        <span
+          :class="{
+            'text-green-500': currentTrack && currentTrack.name == track.name,
+          }"
+        >
           {{ index }}
         </span>
       </div>
 
       <div>
-        <div class="text-white font-semibold">
+        <span
+          :class="
+            currentTrack && currentTrack.name == track.name
+              ? 'text-green-500 font-semibold'
+              : 'text-white font-semibold'
+          "
+        >
           {{ track.name }}
-        </div>
+        </span>
         <div class="text-sm font-semibold text-gray-400">
           {{ artist.name }}
         </div>

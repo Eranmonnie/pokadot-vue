@@ -47,7 +47,7 @@ let openMenu = ref(false);
         :class="openMenu ? ' bg-[#282828]' : 'bg-black'"
         class="bg-black hover:bg-[#282828] rounded-full p-0.5 mr-8 mt-0.5 cursor-pointer"
       >
-        <div class="flex items-center">
+        <div class="flex items-center p-1">
           <img
             src="./assets/logo.svg"
             class="rounded-full"

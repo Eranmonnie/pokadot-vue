@@ -37,7 +37,6 @@ const isHover = () => {
     textIsHover.value = false;
   }
 };
-console.log(icon);
 </script>
 
 <template>

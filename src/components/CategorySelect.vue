@@ -11,7 +11,7 @@ const props = defineProps<{
 const { category, image } = toRefs(props);
 let randColor = ref("");
 randColor.value = uniqolor.random();
-console.log(randColor.value.color);
+
 </script>
 
 <template>

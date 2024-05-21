@@ -1,11 +1,25 @@
 <script setup lang="ts">
 import SongRow from "@/components/SongRow.vue";
 import Play from "vue-material-design-icons/Play.vue";
-import pause from "vue-material-design-icons/Pause.vue";
+import Pause from "vue-material-design-icons/Pause.vue";
 import DotsHorizontal from "vue-material-design-icons/DotsHorizontal.vue";
 import Heart from "vue-material-design-icons/Heart.vue";
 import ClockTimeThreeOutline from "vue-material-design-icons/ClockTimeThreeOutline.vue";
 import artist from "@/artist.json";
+
+import { usesongStore } from "@/stores/song";
+import { storeToRefs } from "pinia";
+
+const song = usesongStore();
+const { isPlaying, currentTrack, currentArtist } = storeToRefs(song);
+
+const playfunc = ()=>{
+  if(currentTrack.value){
+    song.playOrPauseThisSong(currentArtist.value, currentTrack.value)
+  }
+  song.playFromFirst()
+}
+
 </script>
 
 <template>
@@ -48,9 +62,9 @@ import artist from "@/artist.json";
         <div
           class="absolute flex gap-4 items-center justify-start bottom-0 mb-1.5"
         >
-          <button type="button" class="p-1 rounded-full bg-white">
-            <Play v-if="true" fillColor="#181818" :size="25" />
-            <Play v-else fillColor="#181818" :size="25" />
+          <button type="button" class="p-1 rounded-full bg-white" @click="playfunc()">
+            <Play v-if="!isPlaying" fillColor="#181818" :size="25" />
+            <Pause v-else fillColor="#181818" :size="25" />
           </button>
           <button type="button">
             <Heart fillColor="#1BD760" :size="30" />
