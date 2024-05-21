@@ -1,11 +1,22 @@
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import { RouterLink, RouterView } from "vue-router";
 import ChevronUp from "vue-material-design-icons/ChevronUp.vue";
 import ChevronDown from "vue-material-design-icons/ChevronDown.vue";
 import ChevronRight from "vue-material-design-icons/ChevronRight.vue";
 import ChevronLeft from "vue-material-design-icons/ChevronLeft.vue";
 import MenuItem from "./components/MenuItem.vue";
+import MusicPlayer from "./components/MusicPlayer.vue";
+import { usesongStore } from "@/stores/song";
+import { storeToRefs } from "pinia";
+
+const song = usesongStore();
+const { isPlaying, currentTrack } = storeToRefs(song);
+
+onMounted(()=>{
+   isPlaying.value = false
+})
+
 
 let openMenu = ref(false);
 </script setup lang="ts">
@@ -160,6 +171,6 @@ let openMenu = ref(false);
     <RouterView />
     <div class="mb-[100px]"></div>
   </div>
+  <MusicPlayer  v-if="currentTrack"/>
 </template>
 
-<style scoped></style>
